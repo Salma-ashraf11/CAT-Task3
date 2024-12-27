@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Function to encrypt text using Caesar Cipher
+string caesarCipher(string text, int shift) {
+    string encrypted = "";
+
+    for (char c : text) {
+        if (isalpha(c)) {
+            // Determine ASCII base for uppercase or lowercase
+            char base = isupper(c) ? 'A' : 'a';
+
+            // Encrypt character
+            c = (c - base + shift) % 26 + base;
+        }
+        // Append encrypted or unchanged character
+        encrypted += c;
+    }
+
+    return encrypted;
+}
+
+int main() {
+    int n;        // Length of the string
+    string s;     // The unencrypted string
+    int k;        // The encryption key (shift)
+
+    // Input
+    cin >> n;
+    cin >> s;
+    cin >> k;
+
+    // Encrypt and print the result
+    cout << caesarCipher(s, k) << endl;
+
+    return 0;
+}
